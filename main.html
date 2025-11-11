@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Store</title>
+  <!-- Enlazamos el CSS generado al compilar el SCSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- =============================================== -->
+  <!-- CABECERA -->
+  <!-- =============================================== -->
+  <header class="site-header">
+    <div class="container">
+      <h1>Online Store</h1>
+      <p class="subtitle">Busca productos, añádelos al carrito y guarda la información en LocalStorage</p>
+    </div>
+  </header>
+
+  <!-- =============================================== -->
+  <!-- CONTENEDOR PRINCIPAL CON DOS COLUMNAS -->
+  <!-- Izquierda: búsqueda y carrito
+       Derecha: resultados -->
+  <!-- =============================================== -->
+  <main class="container layout">
+    <!-- COLUMNA IZQUIERDA -->
+    <section class="left-column">
+      <!-- FORMULARIO DE BÚSQUEDA -->
+      <form id="searchForm" class="search-form" onsubmit="return false;">
+        <label for="searchInput" class="label">Buscar por título</label>
+        <div class="search-row">
+          <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
+          <button id="searchBtn" type="button">Buscar</button>
+        </div>
+        <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
+      </form>
+
+      <!-- CARRITO DE LA COMPRA -->
+      <aside class="cart-box">
+        <h2 class="cart-title">Carrito</h2>
+        <div id="cartList" class="cart-list"></div>
+        <div class="cart-footer">
+          <span>Total:</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+        <div class="cart-actions">
+          <button id="clearCartBtn" type="button" class="btn-outline">Vaciar carrito</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- COLUMNA DERECHA -->
+    <section class="right-column">
+      <h2 class="results-title">Resultados</h2>
+      <div id="resultsGrid" class="results-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- =============================================== -->
+  <!-- ENLACE AL ARCHIVO DE JAVASCRIPT -->
+  <!-- =============================================== -->
+  <script src="script.js"></script>
+</body>
+
+</html>
