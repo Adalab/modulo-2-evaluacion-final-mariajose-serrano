@@ -5,32 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online Store</title>
-  <!-- Enlazamos el CSS generado al compilar el SCSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Enlazamos el CSS generado (compilado scss) -->
+  <link rel="stylesheet" href="./main.css" />
 </head>
 
 <body>
-  <!-- =============================================== -->
-  <!-- CABECERA -->
-  <!-- =============================================== -->
+
   <header class="site-header">
     <div class="container">
-      <h1>Online Store</h1>
-      <p class="subtitle">Busca productos, añádelos al carrito y guarda la información en LocalStorage</p>
+      <h1>Official Online Store</h1>
+      <p class="subtitle">Busca productos, añádelos al carrito y guarda la info en LocalStorage</p>
     </div>
   </header>
-
-  <!-- =============================================== -->
-  <!-- CONTENEDOR PRINCIPAL CON DOS COLUMNAS -->
-  <!-- Izquierda: búsqueda y carrito
-       Derecha: resultados -->
-  <!-- =============================================== -->
+  <!-- Main Contenedor con 2 columnas -->
   <main class="container layout">
-    <!-- COLUMNA IZQUIERDA -->
+    <!-- Columna Izq. búsqueda x titulo y carrito -->
     <section class="left-column">
-      <!-- FORMULARIO DE BÚSQUEDA -->
+      <!-- Form. busqueda y Rdos. a la Derecha -->
       <form id="searchForm" class="search-form" onsubmit="return false;">
-        <label for="searchInput" class="label">Buscar por título</label>
+
         <div class="search-row">
           <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
           <button id="searchBtn" type="button">Buscar</button>
@@ -38,7 +31,7 @@
         <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
       </form>
 
-      <!-- CARRITO DE LA COMPRA -->
+      <!--Carrito-->
       <aside class="cart-box">
         <h2 class="cart-title">Carrito</h2>
         <div id="cartList" class="cart-list"></div>
@@ -52,16 +45,154 @@
       </aside>
     </section>
 
-    <!-- COLUMNA DERECHA -->
+    <!-- Columna derecha -->
     <section class="right-column">
       <h2 class="results-title">Resultados</h2>
-      <div id="resultsGrid" class="results-grid" aria-live="polite"></div>
+
+      <ul class="products-list">
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png" alt="Retail" />
+          <h3>Fjallraven - Foldsack No. 1 Backpack</h3>
+          <p>Precio: $19.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png" alt="Retail" />
+          <h3>Mens Casual Premium Slim Fit T-Shirts</h3>
+          <p>Precio: $22.30</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png" alt="Retail" />
+          <h3>Mens Cotton Jacket</h3>
+          <p>Precio: $55.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png" alt="Retail" />
+          <h3>Mens Casual Slim Fit</h3>
+          <p>Precio: $15.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png" alt="Retail" />
+          <h3>John Hardy Women's Legends Naga Bracelet</h3>
+          <p>Precio: $695</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png" alt="Retail" />
+          <h3>Solid Gold Petite Micropave</h3>
+          <p>Precio: $168</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png" alt="Retail" />
+          <h3>White Gold Plated Princess</h3>
+          <p>Precio: $9.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_t.png" alt="Retail" />
+          <h3>Pierced Owl Rose Gold Plated Double</h3>
+          <p>Precio: $10.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_t.png" alt="Retail" />
+          <h3>WD 2TB Elements Portable Hard Drive</h3>
+          <p>Precio: $64</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png" alt="Retail" />
+          <h3>SanDisk SSD PLUS 1TB Internal SSD</h3>
+          <p>Precio: $109</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_t.png" alt="Retail" />
+          <h3>Silicon Power 256GB SSD 3D NAND</h3>
+          <p>Precio: $109</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_t.png" alt="Retail" />
+          <h3>WD 4TB Gaming Drive for PS4</h3>
+          <p>Precio: $114</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_t.png" alt="Retail" />
+          <h3>Acer SB220Q bi 21.5 inches Full HD</h3>
+          <p>Precio: $599</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_t.png" alt="Retail" />
+          <h3>Samsung 49-Inch CHG90 144Hz Curved Monitor</h3>
+          <p>Precio: $999.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png" alt="Retail" />
+          <h3>BIYLACLESEN Women's 3-in-1 Snowboard Jacket</h3>
+          <p>Precio: $56.99</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png" alt="Retail" />
+          <h3>Lock and Love Women's Faux Leather Jacket</h3>
+          <p>Precio: $29.95</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png" alt="Retail" />
+          <h3>Rain Jacket Women Windbreaker</h3>
+          <p>Precio: $9.85</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png" alt="Retail" />
+          <h3>MBJ Women's Solid Short Sleeve V</h3>
+          <p>Precio: $9.85</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png" alt="Retail" />
+          <h3>Opna Women's Short Sleeve Moisture</h3>
+          <p>Precio: $7.95</p>
+          <button>Comprar</button>
+        </li>
+
+        <li class="product-item">
+          <img src="https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png" alt="Retail" />
+          <h3>DANVOUY Womens T Shirt Casual Cotton</h3>
+          <p>Precio: $12.99</p>
+          <button>Comprar</button>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <!-- =============================================== -->
-  <!-- ENLACE AL ARCHIVO DE JAVASCRIPT -->
-  <!-- =============================================== -->
   <script src="script.js"></script>
 </body>
 
