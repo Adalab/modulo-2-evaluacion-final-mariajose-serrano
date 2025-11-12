@@ -1,3 +1,6 @@
+/* =============================
+   ESTILOS BASE
+   ============================= */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f6fa;
@@ -5,9 +8,12 @@ body {
   margin: 0;
 }
 
+/* =============================
+   CONTENEDOR DE 2 COLUMNAS
+   ============================= */
 .container.layout {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 320px 1fr; /* Izquierda: carrito / Derecha: resultados */
   gap: 24px;
   width: 90%;
   max-width: 1200px;
@@ -15,6 +21,9 @@ body {
   padding: 24px 0;
 }
 
+/* =============================
+   CABECERA
+   ============================= */
 .site-header {
   background: #f274e4;
   color: white;
@@ -22,26 +31,29 @@ body {
   padding: 20px;
 }
 
-/* RESULTADOS */
+/* =============================
+   COLUMNA DERECHA (RESULTADOS)
+   ============================= */
 .right-column {
   background: transparent;
+  display: flex;
 }
 
-.results-title {
-  font-size: 1.6rem;
-  color: #333;
-  margin-bottom: 16px;
-  text-align: left;
-}
 
-/* LISTA DE PRODUCTOS (20 elementos en 2 columnas) */
-.products-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 🔹 Dos columnas */
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* 
+   LISTADO DE PRODUCTOS (2 columnas)
+*/
+.products_list {
+  display: grid !important;                     /* Usamos GRID para organizar en filas/columnas */
+  grid-template-columns: repeat(2, 1fr) !important; /* 🔹 2 columnas */
+  gap: 30px !important;                         /* Espacio entre tarjetas */
+  list-style: none !important;                  /* Sin puntitos */
+  padding: 0 !important;
+  margin: 0 auto !important;                    /* Centrado horizontal */
+  width: 100%;                                  /* Que ocupe todo el ancho disponible */
+  max-width: 800px;                             /* 🔹 ancho máximo para no pegarse demasiado al carrito */
+  box-sizing: border-box;
+  
 }
 
 .product-item {
@@ -51,6 +63,8 @@ body {
   padding: 16px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  list-style: none;   
+  width: 100%;
 }
 
 .product-item img {
@@ -59,6 +73,7 @@ body {
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 10px;
+
 }
 
 .product-item h3 {
@@ -83,6 +98,125 @@ body {
 }
 
 .product-item button:hover {
-  background: #3730a3;
+  background: #a54ca8;
 }
 
+/* =============================
+   FORMULARIO DE BÚSQUEDA
+   ============================= */
+.search-form {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 auto 40px;        /* 🔹 centrado y separado del resto */
+  max-width: 900px;           /* 🔹 ancho largo */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.search-row input {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  font-size: 1.1rem;
+  padding: 14px 18px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.search-row button {
+  background: #cf63d3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 26px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.search-row button:hover {
+  background: #a54ca8;
+}
+
+.hint {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* =============================
+   CARRITO
+   ============================= */
+.cart-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cart-title {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.cart-actions {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.btn-outline {
+  background: none;
+  color: #cf63d3;
+  border: 2px solid #cf63d3;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #cf63d3;
+  color: #fff;
+}
+
+/* =============================
+   RESPONSIVE
+   ============================= */
+@media (max-width: 850px) {
+  .container.layout {
+    grid-template-columns: 1fr;
+  }
+
+  .products-list {
+    grid-template-columns: 1fr; /* 🔹 1 columna en móvil */
+  }
+
+  .search-row input {
+    max-width: 100%;
+  }
+}

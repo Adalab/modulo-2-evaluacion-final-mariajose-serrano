@@ -17,19 +17,20 @@
       <p class="subtitle">Busca productos, añádelos al carrito y guarda la info en LocalStorage</p>
     </div>
   </header>
+
+  <form id="searchForm" class="search-form" onsubmit="return false;">
+
+    <div class="search-row">
+      <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
+      <button id="searchBtn" type="button">Buscar</button>
+    </div>
+    <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
+  </form>
   <!-- Main Contenedor con 2 columnas -->
   <main class="container layout">
     <!-- Columna Izq. búsqueda x titulo y carrito -->
     <section class="left-column">
       <!-- Form. busqueda y Rdos. a la Derecha -->
-      <form id="searchForm" class="search-form" onsubmit="return false;">
-
-        <div class="search-row">
-          <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
-          <button id="searchBtn" type="button">Buscar</button>
-        </div>
-        <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
-      </form>
 
       <!--Carrito-->
       <aside class="cart-box">
@@ -46,10 +47,9 @@
     </section>
 
     <!-- Columna derecha -->
-    <section class="right-column">
-      <h2 class="results-title">Resultados</h2>
+    <section class="products_list">
 
-      <ul class="products-list">
+      <ul class="products_list">
         <li class="product-item">
           <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png" alt="Retail" />
           <h3>Fjallraven - Foldsack No. 1 Backpack</h3>
