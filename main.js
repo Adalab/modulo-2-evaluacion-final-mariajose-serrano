@@ -3,4 +3,7 @@
 // SECCIÓN DE QUERY-SELECTOR
 // Éstos son los elementos que nos traemos de la página HTML y usamos en el código
 
-const js_products_list = document.querySelector(".js_products-list");
+const products_list = document.querySelector(".products_list");
+
+const cart_box = document.querySelector(".cart_box");
+const search_row = document.querySelector(".search-row");
