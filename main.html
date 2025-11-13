@@ -17,15 +17,12 @@
       <p class="subtitle">Busca productos, añádelos al carrito y guarda la info en LocalStorage</p>
     </div>
   </header>
+  <div class="search-row">
+    <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
+    <button id="searchBtn" type="button">Buscar</button>
+  </div>
+  <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
 
-  <form id="searchForm" class="search-form" onsubmit="return false;">
-
-    <div class="search-row">
-      <input id="searchInput" type="text" placeholder="Ejemplo: backpack" />
-      <button id="searchBtn" type="button">Buscar</button>
-    </div>
-    <p class="hint">Haz clic en el botón para filtrar los productos por su nombre.</p>
-  </form>
   <!-- Main Contenedor con 2 columnas -->
   <main class="container layout">
     <!-- Columna Izq. búsqueda x titulo y carrito -->
