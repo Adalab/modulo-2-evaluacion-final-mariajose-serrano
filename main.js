@@ -23,20 +23,14 @@ const normalize = (s) =>
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
-// Ahora hacer EL FETCH A la API
-
-// --- Función para mostrar los productos ---
-
-// Escucha el input para filtrar
-
+//FETCH
 // --- Traer todos los productos de la API ---
 //Esta es la función que llama a la API Y nos devuelve products
 const getProducts = async () => {
   const response = await fetch("https://fakestoreapi.com/products");
 
-  // Le hemos quitado la constante ahora es una variable que se puede usar en todo el fichero porque sta ya el Let mas arriba creado
-  products = await response.json(); // ← aquí obtienes el array completo
-  //console.log(products); // Muestra el array completo en consola
+  // Le hemos quitado la constante ahora es una variable que se puede usar en todo el fichero porque esta ya el Let mas arriba creado
+  products = await response.json();
   return products;
 };
 
@@ -45,14 +39,6 @@ getProducts().then((products) => {
   // llamamos y despuiés lo logeamos, Aquí ya tengo el array de ptos disponible
   //console.log("Productos recibidos:", products);
 });
-
-// Esta es una funcion que coge products y para cada producto vamos a mapear los datos en el HTML para crear una tarjeta
-//Esta constante va al HTML selecciona la clase products_list y la llamamos container.
-//Y decimos vamos a llamar container a ese div. Decimos coge container y adentro de su HTML vamos a coger los products que hemos pasado
-//a esta funcion y ahora los productos que es un array de objetos, tenemos que hacer algo.  cada uno de los objetos
-//por eso cogemos los productos y decimos vamos a inyectar al container un div
-//con clase product item para cada uno de los productos
-// lo interpolamos en esa estructura de tarjeta que hemos creado.
 
 const renderProductCards = (products) => {
   products_list.innerHTML = products
@@ -75,7 +61,7 @@ getProducts().then((products) => {
   //console.log(products); // <-- console log
   renderProductCards(products);
 
-  //con eso la llamamos para que la ahag-
+  //con eso la llamamos para que la haga
   addBuyButtonsEvents();
 });
 
@@ -99,15 +85,6 @@ function searchRow() {
 
 document.querySelector(".search-row").addEventListener("click", searchRow);
 
-// CARRITO Para que el carrito funcione, necesitas:
-// Capturar los botones Comprar
-// Añadir el id del producto al array
-// Renderizar el carrito.
-
-//Array que se llame products ids
-
-//Selecciono el carrito y la lista
-
 //Array donde guardamos lo añadido
 let product_ids = [];
 
@@ -124,11 +101,7 @@ function addProductToCart(productId) {
   renderCart(); // repintamos el carrito
 }
 
-//Función: enganchar los botones “Comprar”
-
-//Añade esto al final de renderProductCards():
-
-//llama a addproduct to cart con el id
+//Función enganchar botones “Comprar”
 
 function addBuyButtonsEvents() {
   const buttons = document.querySelectorAll(".btn-buy");
@@ -172,8 +145,3 @@ function renderCart() {
 
   cartTotal.textContent = `$${total.toFixed(2)}`;
 }
-
-//Cuando pulses Comprar →
-//se ejecuta addProductToCart(id) →
-//se mete el producto →
-//renderCart() actualiza el carrito.
