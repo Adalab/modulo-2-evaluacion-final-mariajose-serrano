@@ -48,9 +48,7 @@ getProducts().then((products) => {
 // lo interpolamos en esa estructura de tarjeta que hemos creado.
 
 const renderProductCards = (products) => {
-  const container = document.querySelector(".products_list");
-
-  container.innerHTML = products
+  products_list.innerHTML = products
     .map(
       (p) => `
         <div class="product-item" ${p.id}">
@@ -64,7 +62,7 @@ const renderProductCards = (products) => {
     .join("");
 };
 
-//aqui estamos llamando a las funciones
+//aqui estamos llamando a las funciones.
 
 getProducts().then((products) => {
   console.log(products); // <-- console log
