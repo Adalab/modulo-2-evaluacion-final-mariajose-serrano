@@ -8,6 +8,12 @@ const products_list = document.querySelector(".products_list");
 const cart_box = document.querySelector(".cart_box");
 const search_row = document.querySelector(".search-row");
 
+//Seleccionar carrito y la lista
+
+const cartBox = document.querySelector(".cartBox");
+const cartList = document.getElementById("cartList");
+const cartTotal = document.getElementById("cartTotal");
+
 let products = []; //se llenará con el Fetch
 
 // Normaliza texto (para filtrar sin tildes)
@@ -30,15 +36,14 @@ const getProducts = async () => {
 
   // Le hemos quitado la constante ahora es una variable que se puede usar en todo el fichero porque sta ya el Let mas arriba creado
   products = await response.json(); // ← aquí obtienes el array completo
-  console.log(products); // Muestra el array completo en consola
+  //console.log(products); // Muestra el array completo en consola
   return products;
 };
 
 // --- Ejemplo de uso hemos llamado a get products ---
 getProducts().then((products) => {
   // llamamos y despuiés lo logeamos, Aquí ya tengo el array de ptos disponible
-
-  console.log("Productos recibidos:", products);
+  //console.log("Productos recibidos:", products);
 });
 
 // Esta es una funcion que coge products y para cada producto vamos a mapear los datos en el HTML para crear una tarjeta
@@ -67,8 +72,11 @@ const renderProductCards = (products) => {
 //aqui estamos llamando a las funciones.
 
 getProducts().then((products) => {
-  console.log(products); // <-- console log
+  //console.log(products); // <-- console log
   renderProductCards(products);
+
+  //con eso la llamamos para que la ahag-
+  addBuyButtonsEvents();
 });
 
 // SECCIÓN DE EVENTOS
@@ -91,10 +99,81 @@ function searchRow() {
 
 document.querySelector(".search-row").addEventListener("click", searchRow);
 
-// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
-// Este código se ejecutará cuando se carga la página
-// Lo más común es:
-//   - Pedir datos al servidor
-//   - Pintar (render) elementos en la página
+// CARRITO Para que el carrito funcione, necesitas:
+// Capturar los botones Comprar
+// Añadir el id del producto al array
+// Renderizar el carrito.
 
-console.log("Página y JS cargados!");
+//Array que se llame products ids
+
+//Selecciono el carrito y la lista
+
+//Array donde guardamos lo añadido
+let product_ids = [];
+
+//Función: añadir producto al carrito
+
+//aqui cogemos los products que ya tenemos del API y definimos una nueva contstante
+//donde incluimos nuevos ids que ya tenemos
+function addProductToCart(productId) {
+  product_ids.push(Number(productId)); // añadimos el id
+  const products_in_cart = products.filter((product) =>
+    product_ids.includes(product.id)
+  );
+  console.log(products_in_cart);
+  renderCart(); // repintamos el carrito
+}
+
+//Función: enganchar los botones “Comprar”
+
+//Añade esto al final de renderProductCards():
+
+//llama a addproduct to cart con el id
+
+function addBuyButtonsEvents() {
+  const buttons = document.querySelectorAll(".btn-buy");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      console.log(product_ids, "product_ids");
+
+      console.log(e.target.dataset.id);
+      addProductToCart(e.target.dataset.id);
+      console.log(product_ids, "product_ids");
+    });
+  });
+}
+
+//Pintar el carrito
+function renderCart() {
+  cartList.innerHTML = "";
+  let total = 0;
+
+  // contar cantidades
+  const counts = {};
+  product_ids.forEach((id) => {
+    counts[id] = (counts[id] || 0) + 1;
+  });
+
+  // recorrer los ids únicos
+  Object.entries(counts).forEach(([id, qty]) => {
+    const product = products.find((p) => p.id === Number(id));
+
+    const item = document.createElement("div");
+    item.className = "cart-item";
+    item.innerHTML = `
+      <span>${product.title} (x${qty})</span>
+      <strong>$${(product.price * qty).toFixed(2)}</strong>
+    `;
+
+    cartList.appendChild(item);
+    total += product.price * qty;
+  });
+
+  cartTotal.textContent = `$${total.toFixed(2)}`;
+}
+
+//Cuando pulses Comprar →
+//se ejecuta addProductToCart(id) →
+//se mete el producto →
+//renderCart() actualiza el carrito.
