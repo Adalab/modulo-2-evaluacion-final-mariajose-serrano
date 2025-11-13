@@ -8,7 +8,7 @@ const products_list = document.querySelector(".products_list");
 const cart_box = document.querySelector(".cart_box");
 const search_row = document.querySelector(".search-row");
 
-let productsList = []; //se llenará con el Fetch
+let products = []; //se llenará con el Fetch
 
 // Normaliza texto (para filtrar sin tildes)
 const normalize = (s) =>
@@ -27,7 +27,9 @@ const normalize = (s) =>
 //Esta es la función que llama a la API Y nos devuelve products
 const getProducts = async () => {
   const response = await fetch("https://fakestoreapi.com/products");
-  const products = await response.json(); // ← aquí obtienes el array completo
+
+  // Le hemos quitado la constante ahora es una variable que se puede usar en todo el fichero porque sta ya el Let mas arriba creado
+  products = await response.json(); // ← aquí obtienes el array completo
   console.log(products); // Muestra el array completo en consola
   return products;
 };
@@ -68,3 +70,31 @@ getProducts().then((products) => {
   console.log(products); // <-- console log
   renderProductCards(products);
 });
+
+// SECCIÓN DE EVENTOS
+// Éstos son los eventos a los que reacciona la página
+// Los más comunes son: click (en botones, enlaces), input (en ídem) y submit (en form)
+
+//Boton de buscar
+
+function searchRow() {
+  const q = normalize(searchInput.value.trim());
+
+  const filtered = q
+    ? products.filter((p) => normalize(p.title).includes(q))
+    : products;
+
+  renderProductCards(filtered);
+}
+
+//Para que lo escuche cuando usuario haga el click. y entonces lance el código que está dentro de search row
+
+document.querySelector(".search-row").addEventListener("click", searchRow);
+
+// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
+// Este código se ejecutará cuando se carga la página
+// Lo más común es:
+//   - Pedir datos al servidor
+//   - Pintar (render) elementos en la página
+
+console.log("Página y JS cargados!");
